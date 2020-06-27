@@ -36,12 +36,11 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Generators\TilesGenerator.cs" />
      <Compile Include="Assets\Scripts\Models\Tile.cs" />
-     <Compile Include="Assets\Scripts\Models\BackObject.cs" />
-     <Compile Include="Assets\Scripts\Models\FrontObject.cs" />
-     <Compile Include="Assets\Scripts\Models\World.cs" />
      <Compile Include="Assets\Scripts\Controllers\WorldController.cs" />
+     <Compile Include="Assets\Scripts\Models\World.cs" />
+     <Compile Include="Assets\Scripts\Models\InstalledObject.cs" />
+     <Compile Include="Assets\Scripts\Models\LooseObject.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/2020.2.0a12/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

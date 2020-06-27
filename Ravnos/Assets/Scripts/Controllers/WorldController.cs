@@ -1,22 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class WorldController : MonoBehaviour
 {
-    public Sprite oceanSprite, landSprite;
-    public int x, y;
+    public Sprite floorSprite;
     World world;
 
-    // Start is called before the first frame update
     void Start()
     {
-        TilesGenerator tilesGenerator = new TilesGenerator(x,y);
-        //crear el mundo con sprites vacíos
-        this.world = new World(tilesGenerator.getX,tilesGenerator.getY);
-        //crear gameObject de manera secuencial
-        for (int x = 0; x < world.getWidth(); x++){
-            for (int y = 0; y < world.getHeigth(); y++){
+        //create a world with empty tiles
+        this.world = new World();
+
+        //create a gameObject for each of our tiles, so they show visually
+        for (int x = 0; x < world.getWidth(); x++)
+        {
+            for (int y = 0; y < world.getHeigth(); y++)
+            {
                 Tile tile_data = world.GetTileAt(x, y);
                 GameObject tile_go = new GameObject();
                 tile_go.name = "Tile_" + x + "_" + y;
@@ -27,22 +28,27 @@ public class WorldController : MonoBehaviour
                 tile_data.RegistrerTileTypeChangedCallback((tile) => {OnTileTypeChanged(tile, tile_go);});
             }
         }
-        //establece tipo de terreno básico
-        world.SetTiles(tilesGenerator.getMap, tilesGenerator.getX, tilesGenerator.getY);
+        world.RandomizeTiles();
     }
-
+    
     // Update is called once per frame
     void Update()
     {
         
     }
 
-    void OnTileTypeChanged(Tile tile_data, GameObject tile_go){
-        if (tile_data.Type == Tile.TileType.water){
-            tile_go.GetComponent<SpriteRenderer>().sprite = oceanSprite;
-        }else if(tile_data.Type == Tile.TileType.land){
-            tile_go.GetComponent<SpriteRenderer>().sprite = landSprite;
-        }else{
+    void OnTileTypeChanged(Tile tile_data, GameObject tile_go)
+    {
+        if (tile_data.Type == Tile.TileType.Floor)
+        {
+            tile_go.GetComponent<SpriteRenderer>().sprite = floorSprite;
+        }
+        else if (tile_data.Type == Tile.TileType.Empty)
+        {
+            tile_go.GetComponent<SpriteRenderer>().sprite = null;
+        }
+        else
+        {
             Debug.LogError("OnTileTypeChanged: Unrecognize tile type.");
         }
     }

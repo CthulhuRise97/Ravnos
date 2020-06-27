@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class Tile{
-    //tipo de terrenos
-    public enum TileType{water,land};
-
-    //oceano por defecto
-    TileType type = TileType.water;
-    //call back (cambio del Tile type)
+public class Tile
+{
+    //Tipo de "terreno"
+    public enum TileType { Empty, Floor };
+    //Tile vacío por defecto
+    TileType type = TileType.Empty;
     Action<Tile> cbtyleTypeChanged;
 
-    public TileType Type{
-        get{
+    public TileType Type
+    {
+        get
+        {
             return type;
-        }set{
+        }
+        set
+        {
             TileType oldTile = type;
             type = value;
             //call the call back
@@ -25,30 +28,31 @@ public class Tile{
         }
     }
 
-    BackObject backObject;          //fondo
-    FrontObject frontObject;        //frente
+    LooseObject looseObject;            //fondo
+    InstalledObject installedObject;    //frente
 
-    //generar el mundo
+    //world gen
     World world;
-    int x,y;
-    
-    //funcion variable X
-    public int X{
-        get{
+    int x, y;
+
+    public int X
+    {
+        get
+        {
             return x;
         }
     }
 
-    //funcion variable Y
-    public int Y{
-        get{
+    public int Y
+    {
+        get
+        {
             return y;
         }
     }
 
-    //Contructor
-    //crear de Tile en x,y (coordenadas de world)
-    public Tile(World world, int x, int y){
+    public Tile(World world, int x, int y)
+    {
         this.world = world;
         this.x = x;
         this.y = y;
