@@ -330,17 +330,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25296d0a42dbaeb40ad6ae0d5be4e791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawMode: 0
+  drawMode: 1
   mapWidth: 200
   mapHeigth: 120
-  noiseScale: 60
-  autoUpdate: 1
+  noiseScale: 45
+  autoUpdate: 0
   octaves: 5
   persistance: 0.5
   lacunarity: 2
   offset: {x: 0, y: 0}
-  SimplexNoiseVar: 0
-  regions: []
+  noiseSelector: 1
+  regions:
+  - heigth: 0.4
+    name: Deep
+    colour: {r: 0, g: 0.0323627, b: 1, a: 0}
+  - heigth: 0.45
+    name: Ocean
+    colour: {r: 0.06132078, g: 1, b: 0.9460135, a: 0}
+  - heigth: 0.49
+    name: Sand
+    colour: {r: 1, g: 0.99701774, b: 0, a: 0}
+  - heigth: 0.6
+    name: Grass
+    colour: {r: 0.078704715, g: 1, b: 0, a: 0}
+  - heigth: 0.7
+    name: Wood
+    colour: {r: 0.09459342, g: 0.5188679, b: 0.012237449, a: 0}
+  - heigth: 0.77
+    name: Rock
+    colour: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 0}
+  - heigth: 0.8
+    name: Mountain
+    colour: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 0}
+  - heigth: 1
+    name: Snow
+    colour: {r: 1, g: 1, b: 1, a: 0}
 --- !u!114 &685184744
 MonoBehaviour:
   m_ObjectHideFlags: 0
