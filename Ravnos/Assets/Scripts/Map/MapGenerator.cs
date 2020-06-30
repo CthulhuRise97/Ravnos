@@ -29,7 +29,7 @@ public class MapGenerator : MonoBehaviour
     public Vector2 offset;
 
     //tipos de ruido
-    public enum NoiseSelector { Perlin, Simplex, Value, Voronoi, Worley };
+    public enum NoiseSelector { Perlin, Simplex, Value, Voronoi, VoronoiPerlin };
     public NoiseSelector noiseSelector;
 
     public TerrainType[] regions;
@@ -55,9 +55,11 @@ public class MapGenerator : MonoBehaviour
             NoiseMap = ValueNoise.ValueNoiseMapGenerator(this.mapWidth,this.mapHeigth, int_seed, this.noiseScale);
         }else if(this.noiseSelector == NoiseSelector.Voronoi){
             NoiseMap = VoronoiNoise.ValueNoiseMapGenerator(this.mapWidth, this.mapHeigth, int_seed, this.noiseScale, octaves, persistance);
-        }/*else if(this.noiseSelector == NoiseSelector.Worley){
-
-        }*/
+        }else if(this.noiseSelector == NoiseSelector.VoronoiPerlin){
+            float[,] PerlinNoiseMap = PerlinNoise.PerlinNoiseMapGenerator(this.mapWidth, this.mapHeigth, int_seed, this.noiseScale, octaves, persistance, lacunarity, offset);
+            float[,] VoronoiNoiseMap = VoronoiNoise.ValueNoiseMapGenerator(this.mapWidth, this.mapHeigth, int_seed, this.noiseScale, octaves, persistance);
+            NoiseMap = ConvolutionSystem.convolution(this.mapWidth,this.mapHeigth,PerlinNoiseMap,VoronoiNoiseMap);
+        }
         else
         {
             //default: perlin noise

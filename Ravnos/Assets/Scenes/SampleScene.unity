@@ -330,16 +330,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25296d0a42dbaeb40ad6ae0d5be4e791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawMode: 0
+  drawMode: 1
   mapWidth: 200
   mapHeigth: 120
   noiseScale: 45
-  autoUpdate: 0
+  autoUpdate: 1
   octaves: 5
   persistance: 0.5
   lacunarity: 2
   offset: {x: 0, y: 0}
-  noiseSelector: 3
+  noiseSelector: 4
   regions:
   - heigth: 0.4
     name: Deep

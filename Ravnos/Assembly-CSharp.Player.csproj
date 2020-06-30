@@ -56,11 +56,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Textures\TextureGenerator.cs" />
     <Compile Include="Assets\Scripts\Noise\PerlinNoise.cs" />
+    <Compile Include="Assets\Scripts\Noise\VoronoiNoise.cs" />
     <Compile Include="Assets\Scripts\Map\MapGenerator.cs" />
     <Compile Include="Assets\Scripts\Noise\SimplexNoise.cs" />
     <Compile Include="Assets\Scripts\Noise\ValueNoise.cs" />
     <Compile Include="Assets\Scripts\Map\MapDisplay.cs" />
-    <Compile Include="Assets\Scripts\Noise\VoronoiNoise.cs" />
+    <Compile Include="Assets\Scripts\Noise\ConvolutionSystem.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/2020.2.0a12/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/mono/Managed/UnityEngine.dll</HintPath>
     </Reference>
