@@ -334,12 +334,12 @@ MonoBehaviour:
   mapWidth: 200
   mapHeigth: 120
   noiseScale: 45
-  autoUpdate: 1
+  autoUpdate: 0
   octaves: 5
   persistance: 0.5
   lacunarity: 2
   offset: {x: 0, y: 0}
-  noiseSelector: 4
+  noiseSelector: 0
   regions:
   - heigth: 0.4
     name: Deep
@@ -362,7 +362,7 @@ MonoBehaviour:
   - heigth: 0.8
     name: Mountain
     colour: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 0}
-  - heigth: 1
+  - heigth: 5
     name: Snow
     colour: {r: 1, g: 1, b: 1, a: 0}
 --- !u!114 &685184744
