@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25296d0a42dbaeb40ad6ae0d5be4e791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawMode: 1
+  drawMode: 0
   mapWidth: 200
   mapHeigth: 120
   noiseScale: 45
@@ -339,7 +339,7 @@ MonoBehaviour:
   persistance: 0.5
   lacunarity: 2
   offset: {x: 0, y: 0}
-  noiseSelector: 1
+  noiseSelector: 2
   regions:
   - heigth: 0.4
     name: Deep

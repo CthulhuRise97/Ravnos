@@ -50,9 +50,10 @@ public class MapGenerator : MonoBehaviour
         else if (this.noiseSelector == NoiseSelector.Simplex)
         {
             NoiseMap = SimplexNoise.SimplexNoiseMapGenerator(this.mapWidth,this.mapHeigth, int_seed, octaves, offset);
-        }/*else if(this.noiseSelector == NoiseSelector.Value){
-
-        }else if(this.noiseSelector == NoiseSelector.Voronoi){
+        }else if(this.noiseSelector == NoiseSelector.Value)
+        {
+            NoiseMap = ValueNoise.ValueNoiseMapGenerator(this.mapWidth,this.mapHeigth, int_seed, this.noiseScale);
+        }/*else if(this.noiseSelector == NoiseSelector.Voronoi){
 
         }else if(this.noiseSelector == NoiseSelector.Worley){
 
