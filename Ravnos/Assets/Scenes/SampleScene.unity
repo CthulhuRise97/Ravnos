@@ -339,7 +339,7 @@ MonoBehaviour:
   persistance: 0.5
   lacunarity: 2
   offset: {x: 0, y: 0}
-  noiseSelector: 2
+  noiseSelector: 3
   regions:
   - heigth: 0.4
     name: Deep

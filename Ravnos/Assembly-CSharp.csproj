@@ -58,7 +58,9 @@
     <Compile Include="Assets\Scripts\Noise\PerlinNoise.cs" />
     <Compile Include="Assets\Scripts\Map\MapGenerator.cs" />
     <Compile Include="Assets\Scripts\Noise\SimplexNoise.cs" />
+    <Compile Include="Assets\Scripts\Noise\ValueNoise.cs" />
     <Compile Include="Assets\Scripts\Map\MapDisplay.cs" />
+    <Compile Include="Assets\Scripts\Noise\VoronoiNoise.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/2020.2.0a12/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

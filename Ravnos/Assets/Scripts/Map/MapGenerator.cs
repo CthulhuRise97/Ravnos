@@ -53,9 +53,9 @@ public class MapGenerator : MonoBehaviour
         }else if(this.noiseSelector == NoiseSelector.Value)
         {
             NoiseMap = ValueNoise.ValueNoiseMapGenerator(this.mapWidth,this.mapHeigth, int_seed, this.noiseScale);
-        }/*else if(this.noiseSelector == NoiseSelector.Voronoi){
-
-        }else if(this.noiseSelector == NoiseSelector.Worley){
+        }else if(this.noiseSelector == NoiseSelector.Voronoi){
+            NoiseMap = VoronoiNoise.ValueNoiseMapGenerator(this.mapWidth, this.mapHeigth, int_seed, this.noiseScale, octaves, persistance);
+        }/*else if(this.noiseSelector == NoiseSelector.Worley){
 
         }*/
         else
