@@ -14,24 +14,24 @@ public struct TerrainType
 
 public class MapGenerator : MonoBehaviour
 {
-    public enum DrawMode { NoiseMap, ColourMap };
+    public enum DrawMode { NoiseMap, HeighMap };
+    public enum NoiseSelector { Perlin, Simplex, Value, Voronoi, PerlinVoronoi };
+
+    //selectores
+    public NoiseSelector noiseSelector;
     public DrawMode drawMode;
 
-    public int mapWidth;
-    public int mapHeigth;
-    public float noiseScale;
+    //variables
+    public int mapWidth = 200;
+    public int mapHeigth = 120;
     public bool autoUpdate;
-
-    public int octaves;
-    [Range(0, 1)]
-    public float persistance;
-    public float lacunarity;
+    public float lacunarity = 2;
     public Vector2 offset;
-
-    //tipos de ruido
-    public enum NoiseSelector { Perlin, Simplex, Value, Voronoi, VoronoiPerlin };
-    public NoiseSelector noiseSelector;
-
+    public int octaves = 5;
+    [Range(0, 1)]
+    public float persistance = 0.5f;
+    [Range(0, 50)]
+    public float noiseScale = 45;
     public TerrainType[] regions;
 
     public void GenerateMap()
@@ -43,30 +43,24 @@ public class MapGenerator : MonoBehaviour
         int int_seed = local_seed.Next(-100000, 100000);
         float[,] NoiseMap;
 
-        if (this.noiseSelector == NoiseSelector.Perlin)
-        {
+        if (this.noiseSelector == NoiseSelector.Perlin) {
             NoiseMap = PerlinNoise.PerlinNoiseMapGenerator(this.mapWidth, this.mapHeigth, int_seed, this.noiseScale, octaves, persistance, lacunarity, offset);
-        }
-        else if (this.noiseSelector == NoiseSelector.Simplex)
-        {
-            NoiseMap = SimplexNoise.SimplexNoiseMapGenerator(this.mapWidth,this.mapHeigth, int_seed, octaves, offset);
-        }else if(this.noiseSelector == NoiseSelector.Value)
-        {
-            NoiseMap = ValueNoise.ValueNoiseMapGenerator(this.mapWidth,this.mapHeigth, int_seed, this.noiseScale);
-        }else if(this.noiseSelector == NoiseSelector.Voronoi){
+        } else if (this.noiseSelector == NoiseSelector.Simplex) {
+            NoiseMap = SimplexNoise.SimplexNoiseMapGenerator(this.mapWidth, this.mapHeigth, int_seed, octaves, offset);
+        } else if (this.noiseSelector == NoiseSelector.Value) {
+            NoiseMap = ValueNoise.ValueNoiseMapGenerator(this.mapWidth, this.mapHeigth, int_seed, this.noiseScale);
+        } else if (this.noiseSelector == NoiseSelector.Voronoi) {
             NoiseMap = VoronoiNoise.ValueNoiseMapGenerator(this.mapWidth, this.mapHeigth, int_seed, this.noiseScale, octaves, persistance);
-        }else if(this.noiseSelector == NoiseSelector.VoronoiPerlin){
-            float[,] PerlinNoiseMap = PerlinNoise.PerlinNoiseMapGenerator(this.mapWidth, this.mapHeigth, int_seed, this.noiseScale, octaves, persistance, lacunarity, offset);
-            float[,] VoronoiNoiseMap = VoronoiNoise.ValueNoiseMapGenerator(this.mapWidth, this.mapHeigth, int_seed, this.noiseScale, octaves, persistance);
-            NoiseMap = ConvolutionSystem.convolution(this.mapWidth,this.mapHeigth,PerlinNoiseMap,VoronoiNoiseMap);
-        }
-        else
-        {
+        } else if (this.noiseSelector == NoiseSelector.PerlinVoronoi) {
+            float[,] perlinMap = PerlinNoise.PerlinNoiseMapGenerator(this.mapWidth, this.mapHeigth, int_seed, this.noiseScale, octaves, persistance, lacunarity, offset);
+            float[,] voronoiMap = VoronoiNoise.ValueNoiseMapGenerator(this.mapWidth, this.mapHeigth, int_seed, this.noiseScale, octaves, persistance);
+            NoiseMap = Convolution.ConvolutionMapGenerator(this.mapWidth, this.mapHeigth, perlinMap,voronoiMap);
+        } else {
             //default: perlin noise
             NoiseMap = PerlinNoise.PerlinNoiseMapGenerator(this.mapWidth, this.mapHeigth, int_seed, this.noiseScale, octaves, persistance, lacunarity, offset);
         }
 
-        Color[] colourMap = new Color[mapWidth * mapHeigth];
+        Color[] HeighMap = new Color[mapWidth * mapHeigth];
         for (int y = 0; y < mapHeigth; y++)
         {
             for (int x = 0; x < mapWidth; x++)
@@ -76,7 +70,7 @@ public class MapGenerator : MonoBehaviour
                 {
                     if (currentHeigth <= regions[i].heigth)
                     {
-                        colourMap[y * mapWidth + x] = regions[i].colour;
+                        HeighMap[y * mapWidth + x] = regions[i].colour;
                         break;
                     }
                 }
@@ -88,9 +82,9 @@ public class MapGenerator : MonoBehaviour
         {
             display.DrawTexture(TextureGenerator.TextureFromHeightMap(NoiseMap));
         }
-        else if (drawMode == DrawMode.ColourMap)
+        else if (drawMode == DrawMode.HeighMap)
         {
-            display.DrawTexture(TextureGenerator.TextureFromColourMap(colourMap, mapWidth, mapHeigth));
+            display.DrawTexture(TextureGenerator.TextureFromHeighMap(HeighMap, mapWidth, mapHeigth));
         }
     }
 

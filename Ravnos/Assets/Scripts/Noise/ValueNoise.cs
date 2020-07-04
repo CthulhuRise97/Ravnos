@@ -13,7 +13,6 @@ public class ValueNoise{
                 float xCoord = (float)i / width;
                 float yCoord = (float)j / height;
                 float valor = noise.GetNoise(xCoord, yCoord, noiseScale);
-                Debug.Log("Valor -> " + valor);
                 noiseMap[i,j] = valor;
             }
         }

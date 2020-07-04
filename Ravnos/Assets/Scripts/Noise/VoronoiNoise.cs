@@ -13,7 +13,7 @@ public static class VoronoiNoise
         {
             for (int y = 0; y < height; y++)
             {
-                float valor = VoronoiNoise.FractalNoise2D(x,y,octaves, noiseScale, persistance, seed);
+                float valor = VoronoiNoise.FractalNoise2D(x,y,octaves, noiseScale, persistance, seed) * 2f;
                 noiseMap[x, y] = valor;
             }
         }

@@ -269,7 +269,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 616.58386
+  orthographic size: 1037.7891
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -330,40 +330,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25296d0a42dbaeb40ad6ae0d5be4e791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noiseSelector: 4
   drawMode: 1
-  mapWidth: 200
-  mapHeigth: 120
-  noiseScale: 45
+  mapWidth: 120
+  mapHeigth: 200
   autoUpdate: 0
-  octaves: 5
-  persistance: 0.5
   lacunarity: 2
   offset: {x: 0, y: 0}
-  noiseSelector: 0
+  octaves: 5
+  persistance: 0.5
+  noiseScale: 50
   regions:
+  - heigth: 0.1
+    name: R1
+    colour: {r: 0, g: 0, b: 0, a: 0}
+  - heigth: 0.2
+    name: R2
+    colour: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 0}
+  - heigth: 0.3
+    name: R3
+    colour: {r: 0.15686275, g: 0.15686275, b: 0.15686275, a: 1}
   - heigth: 0.4
-    name: Deep
-    colour: {r: 0, g: 0.0323627, b: 1, a: 0}
-  - heigth: 0.45
-    name: Ocean
-    colour: {r: 0.06132078, g: 1, b: 0.9460135, a: 0}
-  - heigth: 0.49
-    name: Sand
-    colour: {r: 1, g: 0.99701774, b: 0, a: 0}
+    name: R4
+    colour: {r: 0.23529412, g: 0.23529412, b: 0.23529412, a: 0}
+  - heigth: 0.5
+    name: R5
+    colour: {r: 0.3137255, g: 0.3137255, b: 0.3137255, a: 0}
   - heigth: 0.6
-    name: Grass
-    colour: {r: 0.078704715, g: 1, b: 0, a: 0}
+    name: R6
+    colour: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 0}
   - heigth: 0.7
-    name: Wood
-    colour: {r: 0.09459342, g: 0.5188679, b: 0.012237449, a: 0}
-  - heigth: 0.77
-    name: Rock
-    colour: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 0}
+    name: R7
+    colour: {r: 0.47058824, g: 0.47058824, b: 0.47058824, a: 0}
   - heigth: 0.8
-    name: Mountain
-    colour: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 0}
-  - heigth: 5
-    name: Snow
+    name: R8
+    colour: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 0}
+  - heigth: 0.9
+    name: R8
+    colour: {r: 0.6666667, g: 0.6666667, b: 0.6666667, a: 0}
+  - heigth: 1
+    name: R8
+    colour: {r: 0.74509805, g: 0.74509805, b: 0.74509805, a: 0}
+  - heigth: 2
+    name: R8
     colour: {r: 1, g: 1, b: 1, a: 0}
 --- !u!114 &685184744
 MonoBehaviour:
@@ -483,7 +492,7 @@ Transform:
   m_GameObject: {fileID: 769206957}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 200, y: 1, z: 120}
+  m_LocalScale: {x: 120, y: 1, z: 200}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
